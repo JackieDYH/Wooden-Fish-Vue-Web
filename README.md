@@ -1,4 +1,4 @@
-# vue3-demo-pinia
+# Wooden Fish Vue Web - 电子木鱼 Vue3 Web 版本 - By JackieDYH 202308
 
 ```
 npm install pinia
