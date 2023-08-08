@@ -3,9 +3,9 @@ name: Build and Deploy
 on:
   workflow_dispatch:
 
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
 
 jobs:
   build-and-deploy:
@@ -22,7 +22,7 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build project
         run: npm run build
@@ -32,18 +32,18 @@ jobs:
           git config --global user.name "JackieDYH"
           git config --global user.email "1824561218@qq.com"
           git checkout -b deployment
-          git rm -r .
+          git rm -r --cached .
           git clean -df
           mv dist/* .
+          rmdir dist
           git add .
+          git reset node_modules
           git commit -m "Add dist files for deployment"
-          git push origin deployment
-          # git config --global user.name "JackieDYH"
-          # git config --global user.email "1824561218@qq.com"
-          # git checkout -b deployment
-          # git add dist/*
-          # git commit -m "Auto-deploy Add dist files for deployment"
-          # git push origin deployment
+          git push --force origin deployment
+
+          # git add dist
+          # git commit -m "Add dist files for deployment"
+          # git push --force origin deployment
 
       - name: Publish to hosting platform
         # Replace this with the appropriate command or script to publish the build artifacts to your hosting platform
@@ -51,6 +51,8 @@ jobs:
           # Example: deploying to GitHub Pages
           npm install -g gh-pages
           npx gh-pages -d dist
+
+          # npx gh-pages -b deployment -d .
 
 # 在上面的示例代码中，我们首先配置了on.push触发器，指定只有当推送到main分支时才会触发工作流程。
 
