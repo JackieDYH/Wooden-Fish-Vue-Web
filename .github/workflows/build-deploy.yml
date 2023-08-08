@@ -46,7 +46,9 @@ jobs:
         run: |
           # Example: deploying to GitHub Pages
           npm install -g gh-pages
-          npx gh-pages -d dist
+          npx gh-pages -b deployment -d .
+
+          # npx gh-pages -d dist
 
 # 在上面的示例代码中，我们首先配置了on.push触发器，指定只有当推送到main分支时才会触发工作流程。
 
