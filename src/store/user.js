@@ -1,7 +1,7 @@
 /*
  * @Author: Jackie
  * @Date: 2023-07-24 16:34:03
- * @LastEditTime: 2023-08-07 17:54:01
+ * @LastEditTime: 2023-08-08 10:41:30
  * @LastEditors: Jackie
  * @Description: user pinia
  * @FilePath: /Wooden-Fish-Vue-Web/src/store/user.js
@@ -13,9 +13,30 @@ import { toRefs, ref, reactive, computed } from 'vue';
 export const useUserStore = defineStore(
   'user',
   () => {
-    
+    // 状态
+    const state = reactive({
+      name: 'jackie',
+      age: 18
+    });
+    const num = ref(0);
+
+    // 计算
+    const fullName = () => state.name + '' + state.age;
+    const Age = computed(() => `年龄：${state.age}-${num.value}岁`);
+
+    // 修改
+    const setName = (name) => (state.name = name);
+    const setAge = (age) => (state.age += age);
+    const addNum = () => (num.value += 1);
 
     return {
+      ...toRefs(state),
+      num,
+      fullName,
+      Age,
+      setName,
+      setAge,
+      addNum
     };
   },
   {

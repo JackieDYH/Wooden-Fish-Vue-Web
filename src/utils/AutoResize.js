@@ -1,7 +1,7 @@
 /*
  * @Author: Jackie
  * @Date: 2023-08-07 18:15:18
- * @LastEditTime: 2023-08-07 21:41:24
+ * @LastEditTime: 2023-08-08 10:56:02
  * @LastEditors: Jackie
  * @Description: file content
  * @FilePath: /Wooden-Fish-Vue-Web/src/utils/AutoResize.js
@@ -9,11 +9,11 @@
  */
 import router from '@/router/index.js';
 // js文件使用报错处理
-import pinia from '@/store/store';
+// import pinia from '@/store/store';
 // import { createPinia } from 'pinia';
 // const pinia = createPinia();
-import { useAppStore } from '@/store/app.js';
-const appStore = useAppStore(pinia);
+// import { useAppStore } from '@/store/app.js';
+// const appStore = useAppStore(pinia);
 
 let BaseSize = 16;
 const minWidth = 375;
@@ -48,9 +48,9 @@ function setWindowBasicSize() {
   }
   const scale = width / 1920;
 
-  appStore.setSizeRatio(scale);
-  appStore.setWindowWidth(document.documentElement.clientWidth);
-  appStore.setWindowHeight(document.documentElement.clientHeight);
+  // appStore.setSizeRatio(scale);
+  // appStore.setWindowWidth(document.documentElement.clientWidth);
+  // appStore.setWindowHeight(document.documentElement.clientHeight);
 
   const rem2pxRatio = baseSize * Math.min(scale, 2);
   document.documentElement.style.fontSize = `${rem2pxRatio}px`;
