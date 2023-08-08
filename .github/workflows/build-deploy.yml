@@ -39,7 +39,7 @@ jobs:
           git add .
           git reset node_modules
           git commit -m "Add dist files for deployment"
-          git push origin deployment
+          git push --force origin deployment
 
       - name: Publish to hosting platform
         # Replace this with the appropriate command or script to publish the build artifacts to your hosting platform
