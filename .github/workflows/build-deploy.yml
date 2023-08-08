@@ -32,23 +32,27 @@ jobs:
           git config --global user.name "JackieDYH"
           git config --global user.email "1824561218@qq.com"
           git checkout -b deployment
-          git rm -r --cached .
-          git clean -df
-          mv dist/* .
-          rmdir dist
-          git add .
-          git reset node_modules
+          git add dist
           git commit -m "Add dist files for deployment"
           git push --force origin deployment
+
+          # git rm -r --cached .
+          # git clean -df
+          # mv dist/* .
+          # rmdir dist
+          # git add .
+          # git reset node_modules
+          # git commit -m "Add dist files for deployment"
+          # git push --force origin deployment
 
       - name: Publish to hosting platform
         # Replace this with the appropriate command or script to publish the build artifacts to your hosting platform
         run: |
           # Example: deploying to GitHub Pages
           npm install -g gh-pages
-          npx gh-pages -b deployment -d .
+          npx gh-pages -d dist
 
-          # npx gh-pages -d dist
+          # npx gh-pages -b deployment -d .
 
 # 在上面的示例代码中，我们首先配置了on.push触发器，指定只有当推送到main分支时才会触发工作流程。
 
