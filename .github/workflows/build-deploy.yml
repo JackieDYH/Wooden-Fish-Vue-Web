@@ -32,19 +32,20 @@ jobs:
           git config --global user.name "JackieDYH"
           git config --global user.email "1824561218@qq.com"
           git checkout -b deployment
+          git stash
           git rm -r .
           git clean -df
-          mkdir dist
-          mv -u !(dist) dist/
+          mv dist/* .
+          rmdir dist
           git add .
           git commit -m "Add dist files for deployment"
           git push origin deployment
+          git stash apply
 
-          # git config --global user.name "JackieDYH"
-          # git config --global user.email "1824561218@qq.com"
-          # git checkout -b deployment
-          # git add dist/*
-          # git commit -m "Auto-deploy Add dist files for deployment"
+          # mkdir dist
+          # mv -u !(dist) dist/
+          # git add .
+          # git commit -m "Add dist files for deployment"
           # git push origin deployment
 
       - name: Publish to hosting platform
