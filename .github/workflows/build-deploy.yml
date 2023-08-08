@@ -37,6 +37,7 @@ jobs:
           mv dist/* .
           rmdir dist
           git add .
+          git reset node_modules
           git commit -m "Add dist files for deployment"
           git push origin deployment
 
