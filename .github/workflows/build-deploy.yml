@@ -29,11 +29,11 @@ jobs:
 
       - name: Deploy to new branch
         run: |
-          git config  user.name "JackieDYH"
-          git config  user.email "1824561218@qq.com"
+          git config --global user.name "JackieDYH"
+          git config --global user.email "1824561218@qq.com"
           git checkout -b deployment
-          git add .
-          git commit -m "Auto-deploy from JackieDYH"
+          git add dist
+          git commit -m "Auto-deploy Add dist files for deployment"
           git push origin deployment
 
       - name: Publish to hosting platform
