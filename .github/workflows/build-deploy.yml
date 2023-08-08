@@ -32,16 +32,16 @@ jobs:
           git config --global user.name "JackieDYH"
           git config --global user.email "1824561218@qq.com"
           git checkout -b deployment
-          git add dist
+          git rm -r --cached .
+          git clean -df
+          mv dist/* .
+          rmdir dist
+          git add .
+          git reset node_modules
           git commit -m "Add dist files for deployment"
           git push --force origin deployment
 
-          # git rm -r --cached .
-          # git clean -df
-          # mv dist/* .
-          # rmdir dist
-          # git add .
-          # git reset node_modules
+          # git add dist
           # git commit -m "Add dist files for deployment"
           # git push --force origin deployment
 
