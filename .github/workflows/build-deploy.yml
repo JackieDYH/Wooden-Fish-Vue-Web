@@ -32,11 +32,11 @@ jobs:
           git config --global user.name "JackieDYH"
           git config --global user.email "1824561218@qq.com"
           git checkout -b deployment
-          mkdir dist_temp
-          mv dist/* dist_temp/
-          git rm -r .
+          git rm -r --cached .
           git clean -df
-          git add dist_temp
+          mv dist/* .
+          rmdir dist
+          git add .
           git commit -m "Add dist files for deployment"
           git push origin deployment
 
