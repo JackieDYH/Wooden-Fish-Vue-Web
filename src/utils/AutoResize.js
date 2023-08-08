@@ -1,7 +1,7 @@
 /*
  * @Author: Jackie
  * @Date: 2023-08-07 18:15:18
- * @LastEditTime: 2023-08-08 11:54:16
+ * @LastEditTime: 2023-08-08 21:28:10
  * @LastEditors: Jackie
  * @Description: file content
  * @FilePath: /Wooden-Fish-Vue-Web/src/utils/AutoResize.js
@@ -30,7 +30,7 @@ let RouterAutoResize = {
 };
 document.documentElement.style.minWidth = `${minWidth}px`;
 function setWindowBasicSize() {
-  console.log('window resize');
+  // console.log('window resize');
   let baseSize = BaseSize;
   const width =
     document.documentElement.clientWidth > minWidth

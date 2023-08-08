@@ -1,9 +1,9 @@
 /*
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-08 15:37:49
+ * @LastEditTime: 2023-08-08 21:32:05
  * @LastEditors: Jackie
- * @Description: file content
+ * @Description: routers
  * @FilePath: /Wooden-Fish-Vue-Web/src/router/index.js
  * @version:
  */
@@ -12,23 +12,24 @@ import {
   createWebHistory,
   createWebHashHistory
 } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'muyu',
+    component: () => import('@/views/MuYu.vue')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/shaoxiang',
+    name: 'shaoxiang',
+    component: () => import('@/views/ShaoXiang.vue')
+  },
+  {
+    path: '/qiuqian',
+    name: 'qiuqian',
+    component: () => import('@/views/QiuQian.vue')
+  },
+  { path: '/:pathMatch(.*)', component: () => import('@/views/MuYu.vue') }
 ];
 
 const router = createRouter({
