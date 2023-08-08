@@ -22,7 +22,7 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build project
         run: npm run build
@@ -34,8 +34,8 @@ jobs:
           git checkout -b deployment
           git rm -r .
           git clean -df
-          mv dist/* .
-          rmdir dist
+          mkdir dist
+          mv -u !(dist) dist/
           git add .
           git commit -m "Add dist files for deployment"
           git push origin deployment
