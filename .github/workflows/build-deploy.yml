@@ -32,9 +32,18 @@ jobs:
           git config --global user.name "JackieDYH"
           git config --global user.email "1824561218@qq.com"
           git checkout -b deployment
-          git add -f dist/*
-          git commit -m "Auto-deploy Add dist files for deployment"
+          git rm -r .
+          git clean -df
+          mv dist/* .
+          git add .
+          git commit -m "Add dist files for deployment"
           git push origin deployment
+          # git config --global user.name "JackieDYH"
+          # git config --global user.email "1824561218@qq.com"
+          # git checkout -b deployment
+          # git add dist/*
+          # git commit -m "Auto-deploy Add dist files for deployment"
+          # git push origin deployment
 
       - name: Publish to hosting platform
         # Replace this with the appropriate command or script to publish the build artifacts to your hosting platform
