@@ -1,7 +1,7 @@
 /*
  * @Author: Jackie
  * @Date: 2023-08-07 18:15:18
- * @LastEditTime: 2023-08-08 10:56:02
+ * @LastEditTime: 2023-08-08 11:54:16
  * @LastEditors: Jackie
  * @Description: file content
  * @FilePath: /Wooden-Fish-Vue-Web/src/utils/AutoResize.js
@@ -9,9 +9,7 @@
  */
 import router from '@/router/index.js';
 // js文件使用报错处理
-// import pinia from '@/store/store';
-// import { createPinia } from 'pinia';
-// const pinia = createPinia();
+// import pinia from '@/store';
 // import { useAppStore } from '@/store/app.js';
 // const appStore = useAppStore(pinia);
 
