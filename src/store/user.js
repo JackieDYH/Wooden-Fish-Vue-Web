@@ -1,7 +1,7 @@
 /*
  * @Author: Jackie
  * @Date: 2023-07-24 16:34:03
- * @LastEditTime: 2023-08-08 10:41:30
+ * @LastEditTime: 2023-08-09 10:57:17
  * @LastEditors: Jackie
  * @Description: user pinia
  * @FilePath: /Wooden-Fish-Vue-Web/src/store/user.js
@@ -18,25 +18,25 @@ export const useUserStore = defineStore(
       name: 'jackie',
       age: 18
     });
-    const num = ref(0);
+    const merit = ref(0);
 
     // 计算
-    const fullName = () => state.name + '' + state.age;
+    const getMerit = () => state.merit;
     const Age = computed(() => `年龄：${state.age}-${num.value}岁`);
 
     // 修改
     const setName = (name) => (state.name = name);
     const setAge = (age) => (state.age += age);
-    const addNum = () => (num.value += 1);
+    const setMerit = (m) => (merit.value += m);
 
     return {
       ...toRefs(state),
-      num,
-      fullName,
+      merit,
       Age,
+      getMerit,
       setName,
       setAge,
-      addNum
+      setMerit
     };
   },
   {
