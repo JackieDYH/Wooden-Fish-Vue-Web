@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-09 20:44:55
+ * @LastEditTime: 2023-08-09 20:48:56
  * @LastEditors: Jackie
  * @Description: 木鱼
  * @FilePath: /Wooden-Fish-Vue-Web/src/views/MuYu.vue
@@ -43,9 +43,9 @@ const play = () => {
     let eleDiv = document.createElement('div');
     eleDiv.classList.add('show1');
     const add = eleAdd.value.appendChild(eleDiv);
-    setTimeout(() => {
-      eleAdd.value.removeChild(add);
-    }, 2000);
+    // setTimeout(() => {
+    //   eleAdd.value.removeChild(add);
+    // }, 2000);
   }
 };
 
@@ -62,15 +62,7 @@ onMounted(() => {});
     transform: rotateZ(12deg);
   }
 }
-@keyframes run1 {
-  from {
-    top: 150px;
-  }
 
-  to {
-    top: -100px;
-  }
-}
 .muyu {
   display: flex;
   justify-content: center;
@@ -107,6 +99,18 @@ onMounted(() => {});
       transform: rotateZ(30deg);
       animation: run 1s alternate infinite cubic-bezier(0.85, 0.1, 0.89, 0.65);
     }
+  }
+}
+</style>
+
+<style lang="scss">
+@keyframes run1 {
+  from {
+    top: 150px;
+  }
+
+  to {
+    top: -100px;
   }
 }
 .show1::after {
