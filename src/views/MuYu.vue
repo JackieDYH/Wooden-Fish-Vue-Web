@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-09 21:06:23
+ * @LastEditTime: 2023-08-09 21:24:07
  * @LastEditors: Jackie
  * @Description: 木鱼
  * @FilePath: /Wooden-Fish-Vue-Web/src/views/MuYu.vue
@@ -51,7 +51,7 @@ const play = () => {
     eleDiv.classList.add('show1');
     const add = eleAdd.value.appendChild(eleDiv);
     setTimeout(() => {
-      eleAdd.value.removeChild(add);
+      eleAdd.value?.removeChild(add);
     }, 4000);
   } else {
     audioMusic1.value.currentTime = 0;
@@ -62,7 +62,7 @@ const play = () => {
     eleDiv.classList.add('show1');
     const add = eleAdd.value.appendChild(eleDiv);
     setTimeout(() => {
-      eleAdd.value.removeChild(add);
+      eleAdd.value?.removeChild(add);
     }, 2000);
   }
 };
