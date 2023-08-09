@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-08-07 18:21:45
- * @LastEditTime: 2023-08-09 11:01:45
+ * @LastEditTime: 2023-08-09 11:18:18
  * @LastEditors: Jackie
  * @Description: 导航
  * @FilePath: /Wooden-Fish-Vue-Web/src/components/NavBar.vue
@@ -9,6 +9,7 @@
 -->
 <template>
   <div class="total">功德：{{ merit }}</div>
+  <!-- -{{ meritValue }}-{{ getMerit }} -->
   <div class="navbar">
     <img src="@/assets/images/muyu.png" class="but" @click="goPath('/')" />
     <img
@@ -30,13 +31,15 @@
 </template>
 
 <script setup>
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, computed, reactive, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/store/user';
 const router = useRouter();
 const userStore = useUserStore();
-const { merit } = storeToRefs(userStore);
+const { merit, getMerit } = storeToRefs(userStore);
+
+const meritValue = computed(() => getMerit); //userStore.getMerit
 
 const isAudio = ref(false);
 const audioElement = ref(null);
