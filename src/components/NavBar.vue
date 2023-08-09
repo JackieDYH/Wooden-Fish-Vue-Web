@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-08-07 18:21:45
- * @LastEditTime: 2023-08-09 11:18:18
+ * @LastEditTime: 2023-08-09 20:11:19
  * @LastEditors: Jackie
  * @Description: 导航
  * @FilePath: /Wooden-Fish-Vue-Web/src/components/NavBar.vue
@@ -62,7 +62,7 @@ const goPath = (path) => {
 .total {
   color: #909090;
   position: absolute;
-  bottom: 139px;
+  bottom: 200px;
   left: 50%;
   transform: translate(-50%, 0);
   font-size: 24px;
@@ -75,7 +75,7 @@ const goPath = (path) => {
   justify-content: center;
 
   position: absolute;
-  bottom: 10px;
+  bottom: 60px;
   left: 50%;
   transform: translate(-50%, 0);
   .but {
