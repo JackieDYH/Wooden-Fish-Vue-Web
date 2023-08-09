@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-09 20:32:08
+ * @LastEditTime: 2023-08-09 20:38:07
  * @LastEditors: Jackie
  * @Description: 木鱼
  * @FilePath: /Wooden-Fish-Vue-Web/src/views/MuYu.vue
@@ -89,6 +89,34 @@ onMounted(() => {});
       transform: rotateZ(30deg);
       transition: transform 0.5s cubic-bezier(0.85, 0.1, 0.89, 0.65);
     }
+
+    .myg2 {
+      height: 100px;
+      position: absolute;
+      left: 280px;
+      top: 80px;
+      transform: rotateZ(30deg);
+      animation: run 1s alternate infinite cubic-bezier(0.85, 0.1, 0.89, 0.65);
+    }
   }
+}
+.show1::after {
+  content: '功德+1';
+  color: #cecece;
+  font-size: 28px;
+  position: absolute;
+  top: 150px;
+  left: 240px;
+  animation: run1 2s 0.1s ease-in;
+}
+
+.show2::after {
+  content: '功德+1';
+  color: #cecece;
+  font-size: 28px;
+  position: absolute;
+  top: 180px;
+  left: 240px;
+  animation: run1 2s 1s ease-in;
 }
 </style>
