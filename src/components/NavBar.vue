@@ -1,13 +1,14 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-08-07 18:21:45
- * @LastEditTime: 2023-08-08 21:49:29
+ * @LastEditTime: 2023-08-09 10:50:35
  * @LastEditors: Jackie
  * @Description: 导航
  * @FilePath: /Wooden-Fish-Vue-Web/src/components/NavBar.vue
  * @version: 
 -->
 <template>
+  <div class="total">功德：111</div>
   <div class="navbar">
     <img src="@/assets/images/muyu.png" class="but" @click="goPath('/')" />
     <img
@@ -22,18 +23,43 @@
     />
     <img src="@/assets/images/yinyue.png" class="but" @click="music" />
   </div>
+  <!--背景音乐大悲咒-->
+  <audio id="bgmusic" ref="audioElement">
+    <source src="@/assets/music/3.mp3" />
+  </audio>
 </template>
 
 <script setup>
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
+
+const isAudio = ref(false);
+const audioElement = ref(null);
+// 控制音乐播放和暂停
+const music = () => {
+  isAudio.value = !isAudio.value;
+  if (isAudio.value) {
+    audioElement.value.play();
+  } else {
+    audioElement.value.pause();
+  }
+};
 const goPath = (path) => {
   router.push(path);
 };
 </script>
 
 <style lang="scss" scoped>
+.total {
+  color: #909090;
+  position: absolute;
+  bottom: 139px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 24px;
+}
+
 .navbar {
   display: flex;
   /*水平垂直居中*/
