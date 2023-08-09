@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-09 20:48:56
+ * @LastEditTime: 2023-08-09 21:06:23
  * @LastEditors: Jackie
  * @Description: 木鱼
  * @FilePath: /Wooden-Fish-Vue-Web/src/views/MuYu.vue
@@ -11,8 +11,13 @@
   <div class="muyu">
     <div class="wrap">
       <img src="@/assets/images/my01.png" alt="muyu" class="my" @click="play" />
-      <img src="@/assets/images/my02.png" alt="muyugui" class="myg" />
+      <img
+        src="@/assets/images/my02.png"
+        alt="muyugui"
+        :class="isAuto ? 'myg2' : 'myg'"
+      />
       <div ref="eleAdd"></div>
+      <button @click="autoPlay">{{ isAuto ? '自动' : '手动' }}</button>
     </div>
     <!--木鱼声-->
     <audio ref="audioMusic1">
@@ -26,15 +31,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useUserStore } from '@/store/user';
 const userStore = useUserStore();
 const isAuto = ref(false); // false 手动 true 自动
+const intervalFlag = ref(null);
 const eleAdd = ref(null);
 const audioMusic1 = ref(null);
 const audioMusic2 = ref(null);
+
+// 自动/手动
 const play = () => {
   if (isAuto.value) {
+    audioMusic1.value.currentTime = 0;
+    audioMusic1.value.play();
+    userStore.setMerit(+1);
+
+    let eleDiv = document.createElement('div');
+    eleDiv.classList.add('show1');
+    const add = eleAdd.value.appendChild(eleDiv);
+    setTimeout(() => {
+      eleAdd.value.removeChild(add);
+    }, 4000);
   } else {
     audioMusic1.value.currentTime = 0;
     audioMusic1.value.play();
@@ -43,13 +61,31 @@ const play = () => {
     let eleDiv = document.createElement('div');
     eleDiv.classList.add('show1');
     const add = eleAdd.value.appendChild(eleDiv);
-    // setTimeout(() => {
-    //   eleAdd.value.removeChild(add);
-    // }, 2000);
+    setTimeout(() => {
+      eleAdd.value.removeChild(add);
+    }, 2000);
+  }
+};
+
+const autoPlay = () => {
+  if (isAuto.value) {
+    isAuto.value = false;
+    clearInterval(intervalFlag.value);
+
+    // audioMusic1.value.play(); //自动的音乐
+    audioMusic1.value.pause(); //音乐停止
+  } else {
+    isAuto.value = true;
+    play();
+    //setInterval是两秒后开始执行，所以要先执行一次
+    intervalFlag.value = setInterval(play, 2000);
   }
 };
 
 onMounted(() => {});
+onUnmounted(() => {
+  clearInterval(intervalFlag.value);
+});
 </script>
 
 <style lang="scss" scoped>
