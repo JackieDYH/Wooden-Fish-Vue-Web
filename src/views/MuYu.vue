@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-09 20:38:07
+ * @LastEditTime: 2023-08-09 20:44:55
  * @LastEditors: Jackie
  * @Description: 木鱼
  * @FilePath: /Wooden-Fish-Vue-Web/src/views/MuYu.vue
@@ -12,6 +12,7 @@
     <div class="wrap">
       <img src="@/assets/images/my01.png" alt="muyu" class="my" @click="play" />
       <img src="@/assets/images/my02.png" alt="muyugui" class="myg" />
+      <div ref="eleAdd"></div>
     </div>
     <!--木鱼声-->
     <audio ref="audioMusic1">
@@ -29,6 +30,7 @@ import { ref, onMounted } from 'vue';
 import { useUserStore } from '@/store/user';
 const userStore = useUserStore();
 const isAuto = ref(false); // false 手动 true 自动
+const eleAdd = ref(null);
 const audioMusic1 = ref(null);
 const audioMusic2 = ref(null);
 const play = () => {
@@ -37,6 +39,13 @@ const play = () => {
     audioMusic1.value.currentTime = 0;
     audioMusic1.value.play();
     userStore.setMerit(+1);
+
+    let eleDiv = document.createElement('div');
+    eleDiv.classList.add('show1');
+    const add = eleAdd.value.appendChild(eleDiv);
+    setTimeout(() => {
+      eleAdd.value.removeChild(add);
+    }, 2000);
   }
 };
 
