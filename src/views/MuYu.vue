@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-12 17:11:26
+ * @LastEditTime: 2023-08-12 17:30:08
  * @LastEditors: Jackie
  * @Description: 木鱼
  * @FilePath: /Wooden-Fish-Vue-Web/src/views/MuYu.vue
@@ -111,7 +111,7 @@ onUnmounted(() => {
     width: 600px;
     height: 500px;
     position: relative;
-    transform: translate(0, 30%);
+    transform: translate(0, -30%);
     .my {
       width: 400px;
       position: absolute;
