@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-09 21:33:12
+ * @LastEditTime: 2023-08-12 17:00:34
  * @LastEditors: Jackie
  * @Description: 木鱼
  * @FilePath: /Wooden-Fish-Vue-Web/src/views/MuYu.vue
@@ -43,8 +43,8 @@ const audioMusic2 = ref(null);
 // 自动/手动
 const play = () => {
   if (isAuto.value) {
-    audioMusic1.value.currentTime = 0;
-    audioMusic1.value.play();
+    audioMusic2.value.currentTime = 0;
+    audioMusic2.value.play();
     userStore.setMerit(+1);
 
     let eleDiv = document.createElement('div');
@@ -109,7 +109,7 @@ onUnmounted(() => {
     width: 600px;
     height: 500px;
     position: relative;
-    /* transform: translate(0, -40px); */
+    transform: translate(0, 30%);
     .my {
       width: 400px;
       position: absolute;
