@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-12 17:00:34
+ * @LastEditTime: 2023-08-12 17:11:26
  * @LastEditors: Jackie
  * @Description: 木鱼
  * @FilePath: /Wooden-Fish-Vue-Web/src/views/MuYu.vue
@@ -17,7 +17,9 @@
         :class="isAuto ? 'myg2' : 'myg'"
       />
       <div ref="eleAdd"></div>
-      <button @click="autoPlay">{{ isAuto ? '自动' : '手动' }}</button>
+      <div class="autobtn" @click="autoPlay">
+        {{ !isAuto ? '自动积累功德' : '手动积累功德' }}
+      </div>
     </div>
     <!--木鱼声-->
     <audio ref="audioMusic1">
@@ -136,6 +138,30 @@ onUnmounted(() => {
       top: 80px;
       transform: rotateZ(30deg);
       animation: run 1s alternate infinite cubic-bezier(0.85, 0.1, 0.89, 0.65);
+    }
+    .autobtn {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      padding: 8px 12px;
+      border-radius: 5px;
+      background-color: #cecece;
+      color: #000;
+      font-size: 16px;
+      cursor: pointer;
+      user-select: none;
+
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: #888;
+      }
+      &:active {
+        background-color: #444;
+      }
     }
   }
 }
