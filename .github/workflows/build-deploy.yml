@@ -26,31 +26,37 @@ jobs:
 
       - name: Build project
         run: npm run build
+      
+      - name: Deploy to GitHub Pages
+           uses: peaceiris/actions-gh-pages@v3
+           with:
+             personal_token: ${{ secrets.GITHUB_TOKEN }}
+             publish_dir: ./dist
 
-      - name: Deploy to new branch
-        run: |
-          git config --global user.name "JackieDYH"
-          git config --global user.email "1824561218@qq.com"
-          git checkout -b deployment
-          git rm -r --cached .
-          git clean -df
-          mv dist/* .
-          rmdir dist
-          git add .
-          git reset node_modules
-          git commit -m "Add dist files for deployment"
-          git push --force origin deployment
+      # - name: Deploy to new branch
+      #   run: |
+      #     git config --global user.name "JackieDYH"
+      #     git config --global user.email "1824561218@qq.com"
+      #     git checkout -b deployment
+      #     git rm -r --cached .
+      #     git clean -df
+      #     mv dist/* .
+      #     rmdir dist
+      #     git add .
+      #     git reset node_modules
+      #     git commit -m "Add dist files for deployment"
+      #     git push --force origin deployment
 
           # git add dist
           # git commit -m "Add dist files for deployment"
           # git push --force origin deployment
 
-      - name: Publish to hosting platform
-        # Replace this with the appropriate command or script to publish the build artifacts to your hosting platform
-        run: |
-          # Example: deploying to GitHub Pages
-          npm install -g gh-pages
-          npx gh-pages -d dist
+      # - name: Publish to hosting platform
+      #   # Replace this with the appropriate command or script to publish the build artifacts to your hosting platform
+      #   run: |
+      #     # Example: deploying to GitHub Pages
+      #     npm install -g gh-pages
+      #     npx gh-pages -d dist
 
           # npx gh-pages -b deployment -d .
 
