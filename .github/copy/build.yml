@@ -1,0 +1,71 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+
+  # push:
+  #   branches:
+  #     - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to new branch
+        run: |
+          git config --global user.name "JackieDYH"
+          git config --global user.email "1824561218@qq.com"
+          git checkout -b deployment
+          git rm -r --cached .
+          git clean -df
+          mv dist/* .
+          rmdir dist
+          git add .
+          git reset node_modules
+          git commit -m "Add dist files for deployment"
+          git push --force origin deployment
+
+          # git add dist
+          # git commit -m "Add dist files for deployment"
+          # git push --force origin deployment
+
+      - name: Publish to hosting platform
+        # Replace this with the appropriate command or script to publish the build artifacts to your hosting platform
+        run: |
+          # Example: deploying to GitHub Pages
+          npm install -g gh-pages
+          npx gh-pages -d dist
+
+          # npx gh-pages -b deployment -d .
+
+# 在上面的示例代码中，我们首先配置了on.push触发器，指定只有当推送到main分支时才会触发工作流程。
+
+# 然后，在build-and-deploy作业中，我们定义了一系列步骤来执行构建和部署操作。这些步骤包括：
+
+# 检出代码
+# 设置Node.js环境
+# 安装依赖项
+# 构建项目
+# 将代码推送到新分支（在这个例子中，我们使用名为deployment的新分支）
+# 将构建结果发布到托管平台（在这个例子中，我们使用gh-pages模块将构建结果发布到GitHub Pages）
+# 你需要根据你的项目的实际情况，替换或调整示例中的各个步骤。例如，你可能需要使用不同的构建工具、部署到不同的托管平台，或执行其他自定义命令。
+
+# 确保在你的GitHub仓库中创建了相应的分支和配置文件，并将其推送到远程仓库。GitHub Actions将在推送到指定分支时自动触发工作流程。
+
+# 通过这种方式，你可以实现在单个项目推送到主分支时自动进行构建和发布操作，并将结果发布到当前项目的新分支上。
