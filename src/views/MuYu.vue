@@ -1,7 +1,7 @@
 <!--
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-12 17:30:08
+ * @LastEditTime: 2023-08-16 17:53:13
  * @LastEditors: Jackie
  * @Description: 木鱼
  * @FilePath: /Wooden-Fish-Vue-Web/src/views/MuYu.vue
@@ -10,7 +10,13 @@
 <template>
   <div class="muyu">
     <div class="wrap">
-      <img src="@/assets/images/my01.png" alt="muyu" class="my" @click="play" />
+      <img
+        src="@/assets/images/my01.png"
+        alt="muyu"
+        ref="muyuRef"
+        class="my"
+        @click="play"
+      />
       <img
         src="@/assets/images/my02.png"
         alt="muyugui"
@@ -41,6 +47,7 @@ const intervalFlag = ref(null);
 const eleAdd = ref(null);
 const audioMusic1 = ref(null);
 const audioMusic2 = ref(null);
+const muyuRef = ref(null);
 
 // 自动/手动
 const play = () => {
@@ -86,7 +93,20 @@ const autoPlay = () => {
   }
 };
 
-onMounted(() => {});
+// 兼容移动端 active
+const mobileActive = () => {
+  muyuRef.value.addEventListener('touchstart', () => {
+    muyuRef.value.classList.add('active');
+  });
+
+  muyuRef.value.addEventListener('touchend', () => {
+    muyuRef.value.classList.remove('active');
+  });
+};
+
+onMounted(() => {
+  mobileActive();
+});
 onUnmounted(() => {
   clearInterval(intervalFlag.value);
 });
