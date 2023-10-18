@@ -1,7 +1,7 @@
 /*
  * @Author: Jackie
  * @Date: 2023-06-25 09:58:10
- * @LastEditTime: 2023-08-08 21:32:05
+ * @LastEditTime: 2023-10-18 16:43:55
  * @LastEditors: Jackie
  * @Description: routers
  * @FilePath: /Wooden-Fish-Vue-Web/src/router/index.js
@@ -33,8 +33,8 @@ const routes = [
 ];
 
 const router = createRouter({
-  // history: createWebHashHistory(process.env.BASE_URL),
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
+  // history: createWebHistory(process.env.BASE_URL),
   routes
 });
 
